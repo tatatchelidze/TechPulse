@@ -18,7 +18,19 @@ img {
 body {
     background-color: #f4f6f9;
     color: #333;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    "header"
+    "main"
+    "sidebar"
+    "footer";
 }
+
+header { grid-area: header; }
+aside, .sidebar { grid-area: sidebar; }
+main { grid-area: main; }
+footer { grid-area: footer; }
 
 /* Tablet - 768px-დან */
 @media (min-width: 768px) {
@@ -29,12 +41,19 @@ body {
         flex-direction: row;
         justify-content: space-between;
     }
+    body {
+        grid-template-columns: 228px 1fr;
+        grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    }
 }
 
 /* Desktop - 1024px-დან */
 @media (min-width: 1024px) {
     .product-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
     }
     section {
         padding: 3rem;
@@ -44,7 +63,7 @@ body {
 .navbar {
     background-color: #ffffff;
     padding: 1.5rem 2.5rem;
-    display: flex;
+    display: flex; /* გვერდის სტრუქტურისთვის ვიყენებთ grid-ს, რადგან ის მუშაობს ორ განზომილებაში (მწკრივები და სვეტები ერთდროულად), ხოლო ნავიგაციისთვის ვიყენებთ flexbox-ს, რადგან ის იდეალურია ერთ განზომილებაში (მხოლოდ ერთ ხაზზე) ელემენტების გასანაწილებლად. */
     flex-direction: column;
     gap: 0.5rem;
     min-height: 2.75rem;
@@ -137,8 +156,15 @@ body {
     gap: 1.8rem;*/
     flex-wrap: wrap;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: (repeat 3, 1fr);
+    /*grid-template-columns: 1fr 2fr 1fr;*/
+    /*grid-template-columns: 200px 1fr 1fr;*/
+    /* fr არის ფუნქცია რომელიც ზომავს ხელმისაწვდომი თავისუფალი სივრცის წილს/ნაწილს. მაგ, 1fr 2fr 1fr ნიშნავს, რომ მეორე სვეტი ორჯერ უფრო ფართო იქნება, ვიდრე პირველი და მესამე სვეტები. */
+    /*grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));*/
+    /*grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));*/
+    /* auto-fill ინარჩუნებს ცარიელი სვეტების ადგილებსაც კი, თუ ეკრანზე ადგილია.
+    auto-fit შლის ცარიელ სვეტებს და არსებულ ელემენტებს ჭიმავს/ანაწილებს მთელ თავისუფალ სივრცეზე. */
+    gap: 1.25rem;
 }
 
 .product-card {
@@ -147,12 +173,19 @@ body {
     padding: 1.25rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0, 0,05);
     text-align: center;
-    display: flex;
+    /*display: flex;*/
     justify-content: space-between;
-    flex: 1 1 350px;
+    /*flex: 1 1 350px;*/
     flex-direction: column;
     width: 100%;
+    display: grid;
+    place-items: center;
 }
+
+/*.product-card:first-child {
+    grid-column: span 2; დაიკავა ორი სვეტი ჰორიზონტალურად
+    grid-row: span 2; დაიკავა ორი სვეტი ვერტიკალურად
+} */
 
 .product-card img {
     width: 100%;
@@ -187,6 +220,50 @@ body {
     border-radius: 5px;
     font-weight: 500;
     font-size: max(1rem, 1.1vw);
+}
+
+.comparison-section {
+    margin-top: 2.5rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.comparison-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    color: #1e293b;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 0.85rem 1rem;
+    text-align: left;
+}
+
+thead th {
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 600;
+}
+
+.special {
+    color: rgb(238, 26, 26);
 }
 
 .footer {
