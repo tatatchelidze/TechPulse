@@ -407,6 +407,157 @@ thead th {
     }
 }
 
+.registration-section {
+    margin-top: 2.5rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.registration-section h2 {
+    margin-bottom: 1.25rem;
+    font-size: 1.6rem;
+    color: #1e293b;
+}
+
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 650px;
+}
+
+.reg-fieldset {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reg-fieldset legend {
+    padding: 0 0.5rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+/* validation ატრიბუტების შემოწმება:
+- required: ველის შევსებას ხდის სავალდებულოს (ცარიელს არ აგზავნის).
+-minlength/maxlength: ტექსტის სიმბოლოების მინიმალურ და მაქსიმალურ რაოდენობას ზღუდავს.
+-min/max: რიცხვითი ველის (მაგ. ასაკის) დასაშვებ დიაპაზონს განსაზღვრავს.
+-pattern + title: მნიშვნელობას რეგულარულ გამოსახულებასთან ამოწმებს (მაგ. 9 ციფრი, რომელიც 5-ი იწყება) და title-ში მინიშნებას უჩვენებს. */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.65rem 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background-color: #ffffff;
+}
+
+.choice-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.choice-item label {
+    cursor: pointer;
+    color: #1e293b;
+}
+
+.field-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.2rem;
+}
+
+#email-error {
+    color: grey;
+}
+
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible,
+.submit-btn:focus-visible {
+    outline: 3px solid #5b45ff;
+    outline-offset: 2px;
+}
+
+.form-group input:not(:placeholder-shown):invalid {
+    border-color: #dc2626;
+}
+
+.form-group input:not(:placeholder-shown):valid {
+    border-color: #059669;
+}
+
+.form-group input:not(:placeholder-shown):valid + .field-error::before,
+.form-group input:not(:placeholder-shown):invalid + .field-error::before {
+    font-weight: 700;
+    margin-right: 0.35rem;
+}
+
+.form-group input:not(:placeholder-shown):valid + .field-error::before {
+    content: "✓ სწორია";
+    color: #059669;
+}
+
+.form-group input:not(:placeholder-shown):invalid + .field-error::before {
+    content: "✗ არასწორია";
+    color: #dc2626;
+}
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled,
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-statuses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.status-message {
+    padding: 0.65rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.status-success {
+    color: #059669;
+    background-color: #ecfdf5;
+    border: 1px solid #059669;
+}
+
+.status-failure {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border: 1px solid #dc2626;
+}
+
 .footer {
     background-color: #1e293b;
     color: #cbd5e1;

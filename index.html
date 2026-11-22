@@ -106,6 +106,103 @@
               </div>
         </div>
       </section>
+      <section class="registration-section">
+        <h2>რეგისტრაციის ფორმა</h2>
+        <form action="/register" method="post" class="reg-form">
+          <fieldset class="reg-fieldset">
+            <legend>პირადი ინფორმაცია</legend>
+            <div class="form-group">
+            <label for="name">სახელი</label>
+            <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            minlength="2"
+            maxlength="30"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">ელფოსტა</label>
+            <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            aria-invalid="true"
+            aria-describedby="email-error"
+            />
+            <p id="email-error" class="field-error" role="alert">
+              ჩაწერე სწორი ელფოსტა, მაგალითად name@mail.com
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="phone">ტელეფონი</label>
+            <input
+            type="tel"
+            id="phone"
+            name="phone"
+            pattern="5[0-9]{8}"
+            title="9 ციფრი, იწყება 5-ით"
+            />
+          </div>
+          <div class="form-group">
+            <label for="age">ასაკი</label>
+            <input
+            type="number"
+            id="age"
+            name="age"
+            min="16"
+            max="100"
+            />
+          </div>
+          <div class="form-group">
+            <label for="birthdate">დაბადების თარიღი</label>
+            <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">ქალაქი</label>
+            <select id="city" name="city">
+              <option value="tbs">თბილისი</option>
+              <option value="rst">რუსთავი</option>
+              <option value="bat">ბათუმი</option>
+              </select>
+          </div>
+          </fieldset>
+          <fieldset class="reg-fieldset">
+            <legend>გეგმა</legend>
+            <div class="choice-item">
+              <input type="radio" id="p1" name="plan" value="basic" checked />
+              <label for="p1">საბაზო</label>
+            </div>
+            <div class="choice-item">
+              <input type="radio" id="p2" name="plan" value="pro" />
+              <label for="p2">პრემიუმი</label>
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <label for="message">შეტყობინება</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <div class="choice-item">
+            <input type="checkbox" id="agree" name="agree" value="yes" required />
+            <label for="agree">ვეთანხმები წესებს</label>
+          </div>
+          <button type="submit" class="submit-btn" disabled>იგზავნება...</button>
+          <div class="form-statuses">
+            <p class="status-message status-success" role="status">
+              ✓ წარმატება: რეგისტრაცია წარმატებით დასრულდა.
+            </p>
+            <p class="status-message status-failure" role="status">
+              ✗ შეცდომა: გადაამოწმე სავალდებულო ველები და თავიდან სცადე.
+            </p>
+          </div>
+        </form>
+      </section>
     </main>
     <footer class="footer">
       <div class="footer-info">
