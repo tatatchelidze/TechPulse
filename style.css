@@ -266,6 +266,147 @@ thead th {
     color: rgb(238, 26, 26);
 }
 
+.animation-demo {
+    margin-top: 2.5rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.animation-demo h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    color: #1e293b;
+}
+
+.animation-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.demo-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+@keyframes ballBounce {
+    0% {
+        transform: translateY(0) scale(1); 
+        opacity: 0.75;
+    }
+    50% {
+        transform: translateY(-45px) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(0.95);
+        opacity: 0.85;
+    }
+}
+
+.anim-ball {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    animation: ballBounce 1.2s ease-in-out infinite alternate;
+    /*animation-duration: 0.6s;
+    animation-timing-function: linear;*/
+    /*animation-duration: 0.6s;
+    animation-timing-function: steps(5);*/
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform:  translateY(35px);
+    }
+    60% {
+        opacity: 0.85;
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.anim-card {
+    background-color: rgb(243,233, 211);
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    animation-name: cardAppear;
+    animation-duration: 0.9s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards; /*უზრუნველყოფს, რომ ანიმაციის დასრულების შემდეგ ელემენტი შეინარჩუნებს ბოლო კადრის (100%) სტილებს და აღარ დაუბრუნდება საწყის (opacity: 0)მდგომარეობას.*/ 
+}
+
+.anim-card h3 {
+    font-size: 1.05rem;
+    color: #1e293b;
+    margin-bottom: 0.4rem;
+}
+
+.anim-card p {
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.85;
+    }
+    100% {
+        transform: scale(1); /*transform-ს ვიყენებთ left/top-ის ნაცვლად, რადგან transform და opacity layout-ს არ იწვევს და ანიმაცია უფრო გლუვია.*/ 
+        opacity: 1;
+    }
+}
+
+.anim-btn {
+    background-color: greenyellow;
+    color: black;
+    border: none;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.anim-btn:hover {
+    animation: buttonPulse 0.8s ease-in-out infinite;
+    background-color: #b41148;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .anim-ball,
+    .anim-card,
+    .anim-btn:hover {
+        animation: none;
+    }
+}
+
 .footer {
     background-color: #1e293b;
     color: #cbd5e1;
